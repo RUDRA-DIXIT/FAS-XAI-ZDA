@@ -1,0 +1,92 @@
+{
+  "threshold": 0.5,
+  "n_samples": 25238,
+  "accuracy": 0.9973848957920596,
+  "balanced_accuracy": 0.997346165397718,
+  "precision_attack": 0.9976188451398929,
+  "recall_attack": 0.9967711785198402,
+  "f1_attack": 0.9971948316899014,
+  "roc_auc": 0.999982916622247,
+  "average_precision": 0.9999804816994641,
+  "confusion_matrix": {
+    "tn": 13441,
+    "fp": 28,
+    "fn": 38,
+    "tp": 11731
+  },
+  "classification_report": {
+    "normal": {
+      "precision": 0.9971807997625937,
+      "recall": 0.9979211522755959,
+      "f1-score": 0.997550838652219,
+      "support": 13469.0
+    },
+    "attack": {
+      "precision": 0.9976188451398929,
+      "recall": 0.9967711785198402,
+      "f1-score": 0.9971948316899014,
+      "support": 11769.0
+    },
+    "accuracy": 0.9973848957920596,
+    "macro avg": {
+      "precision": 0.9973998224512433,
+      "recall": 0.997346165397718,
+      "f1-score": 0.9973728351710602,
+      "support": 25238.0
+    },
+    "weighted avg": {
+      "precision": 0.997385069357864,
+      "recall": 0.9973848957920596,
+      "f1-score": 0.9973848252621121,
+      "support": 25238.0
+    }
+  },
+  "experiment": "02_full_features_without_attention",
+  "feature_count": 41,
+  "feature_names": [
+    "duration",
+    "protocol_type",
+    "service",
+    "flag",
+    "src_bytes",
+    "dst_bytes",
+    "land",
+    "wrong_fragment",
+    "urgent",
+    "hot",
+    "num_failed_logins",
+    "logged_in",
+    "num_compromised",
+    "root_shell",
+    "su_attempted",
+    "num_root",
+    "num_file_creations",
+    "num_shells",
+    "num_access_files",
+    "is_host_login",
+    "is_guest_login",
+    "count",
+    "srv_count",
+    "serror_rate",
+    "srv_serror_rate",
+    "rerror_rate",
+    "srv_rerror_rate",
+    "same_srv_rate",
+    "diff_srv_rate",
+    "srv_diff_host_rate",
+    "dst_host_count",
+    "dst_host_srv_count",
+    "dst_host_same_srv_rate",
+    "dst_host_diff_srv_rate",
+    "dst_host_same_src_port_rate",
+    "dst_host_srv_diff_host_rate",
+    "dst_host_serror_rate",
+    "dst_host_srv_serror_rate",
+    "dst_host_rerror_rate",
+    "dst_host_srv_rerror_rate",
+    "level"
+  ],
+  "attention_enabled": false,
+  "epochs_requested": 10,
+  "epochs_ran": 10
+}

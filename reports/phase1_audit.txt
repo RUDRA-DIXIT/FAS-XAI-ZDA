@@ -1,0 +1,186 @@
+FAS-XAI-ZDA reproduction - PHASE 1 DATA AUDIT
+run at (UTC): 2026-10-27T20:13:22+00:00
+python 3.12.9 | pandas 3.1.0 | numpy 2.5.4
+
+==============================================================================
+KDDTrain+: file integrity and format  [data\raw\KDDTrain_.txt]
+==============================================================================
+  size           : 19,109,424 bytes
+  sha256         : 1b86d2f957b33082081bba410fe129b475efebcc13c9014c3f447c8271aadf95
+  first line     : 0,tcp,ftp_data,SF,491,0,...
+[PASS] P1-01 No header row (first field is numeric)
+[PASS] P1-02 Every line has exactly 43 fields  -> field-count histogram = {43: 125973}
+[PASS] P1-03 No blank lines  -> 0 blank
+[PASS] P1-04 Plain ASCII text
+  rows x columns : 125,973 x 43
+  column types   : 39 numeric, 4 text (text = ['protocol_type', 'service', 'flag', 'label'])
+
+==============================================================================
+KDDTrain+: the 41 intended model inputs, label and difficulty column
+==============================================================================
+  constant raw-feature columns here: ['num_outbound_cmds']
+[PASS] P1-05 Constant column(s) == spec expectation ['num_outbound_cmds']  -> found ['num_outbound_cmds']
+[PASS] P1-06 40 varying raw features + 'level' == the spec's 41 inputs (same names, same order)  -> 41 derived inputs
+  label column   : 'label'  (23 distinct values)
+  difficulty col : 'level'  integer range 0..21
+
+==============================================================================
+KDDTrain+: missing values and malformed values
+==============================================================================
+[PASS] P1-07 No missing values  -> 0 missing cells
+[PASS] P1-08 No infinite values  -> 0 inf cells
+[PASS] P1-09 No negative numbers in any numeric column
+[PASS] P1-10 All 15 '*_rate' columns lie in [0, 1]
+[WARN] P1-11 Binary-looking columns only contain 0/1  -> extra values found: {'su_attempted': [2]}
+[PASS] P1-12 No stray whitespace in text columns
+[PASS] P1-13 No trailing '.' on label names (as in raw KDD'99)  -> 0 rows
+
+==============================================================================
+KDDTrain+: categorical columns
+==============================================================================
+  protocol_type :   3 distinct  ['icmp', 'tcp', 'udp']
+  service       :  70 distinct  ['IRC', 'X11', 'Z39_50', 'aol', 'auth', 'bgp'] ... (70 distinct)
+  flag          :  11 distinct  ['OTH', 'REJ', 'RSTO', 'RSTOS0', 'RSTR', 'S0', 'S1', 'S2', 'S3', 'SF', 'SH']
+
+==============================================================================
+KDDTrain+: duplicate and conflicting rows
+==============================================================================
+[PASS] P1-14 No fully identical rows (all 43 fields)  -> 0 duplicates
+  rows whose 41-feature vector repeats an earlier row: 16
+  feature vectors that appear with MORE THAN ONE label : 15
+[INFO] Identical features with different labels cannot both be classified correctly by any model - this is irreducible noise, not a bug in our code.
+[PASS] P1-15 File bytes unchanged by the audit (sha256 before == after)
+
+==============================================================================
+KDDTrain+: labels vs paper / specification
+==============================================================================
+  class counts (all classes, descending):
+    normal               67,343
+    neptune              41,214
+    satan                 3,633
+    ipsweep               3,599
+    portsweep             2,931
+    smurf                 2,646
+    nmap                  1,493
+    back                    956
+    teardrop                892
+    warezclient             890
+    pod                     201
+    guess_passwd             53
+    buffer_overflow          30
+    warezmaster              20
+    land                     18
+    imap                     11
+    rootkit                  10
+    loadmodule                9
+    ftp_write                 8
+    multihop                  7
+    phf                       4
+    perl                      3
+    spy                       2
+[PASS] P1-16 Rows == 125,973  -> observed 125,973
+[PASS] P1-17 Normal == 67,343  -> observed 67,343
+[PASS] P1-18 Attack == 58,630  -> observed 58,630
+[PASS] P1-19 Attack classes == 22  -> observed 22
+[PASS] P1-20 The 8 zero-day classes have exactly the counts in paper Fig. 4  -> observed {'imap': 11, 'rootkit': 10, 'loadmodule': 9, 'ftp_write': 8, 'multihop': 7, 'phf': 4, 'perl': 3, 'spy': 2}
+[PASS] P1-21 Other counts quoted in the text match (guess_passwd 53, buffer_overflow 30, warezmaster 20, land 18)  -> observed {'guess_passwd': 53, 'buffer_overflow': 30, 'warezmaster': 20, 'land': 18}
+[PASS] P1-22 Rare-class rule n(C) <= delta selects exactly the 8 spec classes at delta=14
+  delta values (0..60) that select exactly those 8 classes: 11..17
+[PASS] P1-23 That range is 11..17 as the spec claims (AT-02)  -> observed (11, 17)
+[PASS] P1-24 The 14 remaining ('known') attack classes equal the paper's Fig. 5 list  -> 14 classes
+
+==============================================================================
+KDDTrain+: what the 60/20/20 + rare-holdout protocol SHOULD give (arithmetic only)
+==============================================================================
+  zero-day rows moved to test only : 54
+  rows left to split               : 125,919 (67,343 normal + 58,576 known attack)
+           ideal train  ideal val  ideal test   | paper Fig. 3 (train/val/test)
+  normal      40,405.8   13,468.6    13,468.6   | 40,405 / 13,469 / 13,469
+  attack      35,145.6   11,715.2    11,769.2   | 33,558 / 11,715 / 11,769
+[WARN] P1-25 Fig. 3 TRAIN-attack count (33,558) is consistent with 60% of known attacks  -> 60% of 58,576 = 35,145.6; paper shows 33,558; gap = 1,588 rows (spec contradiction C-5; all other Fig. 3 numbers match within rounding)
+[INFO] Per-stratum rounding in Phase 2 may shift counts by +-1; a gap of ~1,588 is not rounding.
+
+==============================================================================
+KDDTrain+: 'level' (difficulty score) vs the binary label  [relevant to spec D-2]
+==============================================================================
+  normal  level mean=20.32  median=21  min=1  max=21
+  attack  level mean=18.57  median=19  min=0  max=21
+[INFO] 'level' is a score the dataset creators computed about each record. The paper feeds it to the model as a feature (spec D-2: we will run with and without it).
+
+==============================================================================
+KDDTest+: file integrity and format  [data\raw\KDDTest_.txt]
+==============================================================================
+  size           : 3,441,513 bytes
+  sha256         : fa46b0935342616aa83b7c2578db355b6a7aaabbc492248172c7a1e8b7ab8f84
+  first line     : 0,tcp,private,REJ,0,0,...
+[PASS] P1-26 No header row (first field is numeric)
+[PASS] P1-27 Every line has exactly 43 fields  -> field-count histogram = {43: 22544}
+[PASS] P1-28 No blank lines  -> 0 blank
+[PASS] P1-29 Plain ASCII text
+  rows x columns : 22,544 x 43
+  column types   : 39 numeric, 4 text (text = ['protocol_type', 'service', 'flag', 'label'])
+
+==============================================================================
+KDDTest+: the 41 intended model inputs, label and difficulty column
+==============================================================================
+  constant raw-feature columns here: ['num_outbound_cmds']
+[PASS] P1-30 'num_outbound_cmds' is also constant in this file (consistency only)  -> found ['num_outbound_cmds']
+  label column   : 'label'  (38 distinct values)
+  difficulty col : 'level'  integer range 0..21
+
+==============================================================================
+KDDTest+: missing values and malformed values
+==============================================================================
+[PASS] P1-31 No missing values  -> 0 missing cells
+[PASS] P1-32 No infinite values  -> 0 inf cells
+[PASS] P1-33 No negative numbers in any numeric column
+[PASS] P1-34 All 15 '*_rate' columns lie in [0, 1]
+[WARN] P1-35 Binary-looking columns only contain 0/1  -> extra values found: {'su_attempted': [2]}
+[PASS] P1-36 No stray whitespace in text columns
+[PASS] P1-37 No trailing '.' on label names (as in raw KDD'99)  -> 0 rows
+
+==============================================================================
+KDDTest+: categorical columns
+==============================================================================
+  protocol_type :   3 distinct  ['icmp', 'tcp', 'udp']
+  service       :  64 distinct  ['IRC', 'X11', 'Z39_50', 'auth', 'bgp', 'courier'] ... (64 distinct)
+  flag          :  11 distinct  ['OTH', 'REJ', 'RSTO', 'RSTOS0', 'RSTR', 'S0', 'S1', 'S2', 'S3', 'SF', 'SH']
+
+==============================================================================
+KDDTest+: duplicate and conflicting rows
+==============================================================================
+[PASS] P1-38 No fully identical rows (all 43 fields)  -> 0 duplicates
+  rows whose 41-feature vector repeats an earlier row: 57
+  feature vectors that appear with MORE THAN ONE label : 57
+[INFO] Identical features with different labels cannot both be classified correctly by any model - this is irreducible noise, not a bug in our code.
+[PASS] P1-39 File bytes unchanged by the audit (sha256 before == after)
+
+==============================================================================
+KDDTest+: STRUCTURE only (labels, categories, row overlap). No model use.
+==============================================================================
+  rows: 22,544   normal: 9,711   attack: 12,833   distinct labels: 38
+  KDDTest+ rows by zero-day category (category decided from KDDTrain+ class names only):
+    normal                                                          9,711
+    known (seen in KDDTrain+, kept for training)                    9,042
+    novel (label never appears in KDDTrain+)                        3,750
+    rare-8 (in KDDTrain+ but held out by the paper's rule)             41
+  rare-8 rows in KDDTest+ per class: {'ftp_write': 3, 'imap': 1, 'loadmodule': 2, 'multihop': 18, 'perl': 2, 'phf': 2, 'rootkit': 13, 'spy': 0}
+  novel classes (17) and rows: mscan=996, apache2=737, processtable=685, snmpguess=331, saint=319, mailbomb=293, snmpgetattack=178, httptunnel=133, named=17, ps=15, sendmail=14, xterm=13, xlock=9, xsnoop=4, worm=2, sqlattack=2, udpstorm=2
+  KDDTrain+ classes that never occur in KDDTest+: ['spy', 'warezclient']
+[PASS] P1-40 KDDTest+ contains attack labels that never occur in KDDTrain+ (natural novelty exists)  -> 17 novel classes, 3,750 rows
+  category names in KDDTest+ not present in KDDTrain+ (would need the 'UNK' code, spec D-1):
+    protocol_type : none  (rows affected: 0)
+    service       : none  (rows affected: 0)
+    flag          : none  (rows affected: 0)
+[INFO] Categories present in KDDTrain+ but absent from KDDTest+: protocol_type=[]; service=['aol', 'harvest', 'http_2784', 'http_8001', 'red_i', 'urh_i']; flag=[]
+  KDDTest+ rows whose 41-feature vector also occurs in KDDTrain+: 664 (2.9% of KDDTest+)
+[WARN] P1-41 No KDDTest+ row repeats a KDDTrain+ feature vector  -> 664 overlapping rows -> secondary evaluation must report results with and without them
+
+==============================================================================
+SUMMARY
+==============================================================================
+  [WARN] P1-11 Binary-looking columns only contain 0/1
+  [WARN] P1-25 Fig. 3 TRAIN-attack count (33,558) is consistent with 60% of known attacks
+  [WARN] P1-35 Binary-looking columns only contain 0/1
+  [WARN] P1-41 No KDDTest+ row repeats a KDDTrain+ feature vector
+RESULT: 37 PASS, 4 WARN, 0 FAIL (WARN = a real finding to read, not a crash; FAIL = data disagrees with spec/format)

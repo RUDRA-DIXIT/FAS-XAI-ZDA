@@ -1,0 +1,697 @@
+{
+  "environment": {
+    "python": "3.12.9",
+    "pandas": "3.1.0",
+    "numpy": "2.5.4",
+    "argv": [
+      "C:\\Users\\OM SAI RAM COMPUTERS\\Documents\\xai-phase 1\\fasxai\\src\\data\\audit_nslkdd.py",
+      "--train",
+      "data/raw/KDDTrain_.txt",
+      "--test",
+      "data/raw/KDDTest_.txt"
+    ]
+  },
+  "checks": [
+    {
+      "id": "P1-01",
+      "status": "PASS",
+      "check": "No header row (first field is numeric)",
+      "detail": ""
+    },
+    {
+      "id": "P1-02",
+      "status": "PASS",
+      "check": "Every line has exactly 43 fields",
+      "detail": "field-count histogram = {43: 125973}"
+    },
+    {
+      "id": "P1-03",
+      "status": "PASS",
+      "check": "No blank lines",
+      "detail": "0 blank"
+    },
+    {
+      "id": "P1-04",
+      "status": "PASS",
+      "check": "Plain ASCII text",
+      "detail": ""
+    },
+    {
+      "id": "P1-05",
+      "status": "PASS",
+      "check": "Constant column(s) == spec expectation ['num_outbound_cmds']",
+      "detail": "found ['num_outbound_cmds']"
+    },
+    {
+      "id": "P1-06",
+      "status": "PASS",
+      "check": "40 varying raw features + 'level' == the spec's 41 inputs (same names, same order)",
+      "detail": "41 derived inputs"
+    },
+    {
+      "id": "P1-07",
+      "status": "PASS",
+      "check": "No missing values",
+      "detail": "0 missing cells"
+    },
+    {
+      "id": "P1-08",
+      "status": "PASS",
+      "check": "No infinite values",
+      "detail": "0 inf cells"
+    },
+    {
+      "id": "P1-09",
+      "status": "PASS",
+      "check": "No negative numbers in any numeric column",
+      "detail": ""
+    },
+    {
+      "id": "P1-10",
+      "status": "PASS",
+      "check": "All 15 '*_rate' columns lie in [0, 1]",
+      "detail": ""
+    },
+    {
+      "id": "P1-11",
+      "status": "WARN",
+      "check": "Binary-looking columns only contain 0/1",
+      "detail": "extra values found: {'su_attempted': [2]}"
+    },
+    {
+      "id": "P1-12",
+      "status": "PASS",
+      "check": "No stray whitespace in text columns",
+      "detail": ""
+    },
+    {
+      "id": "P1-13",
+      "status": "PASS",
+      "check": "No trailing '.' on label names (as in raw KDD'99)",
+      "detail": "0 rows"
+    },
+    {
+      "id": "P1-14",
+      "status": "PASS",
+      "check": "No fully identical rows (all 43 fields)",
+      "detail": "0 duplicates"
+    },
+    {
+      "id": "P1-15",
+      "status": "PASS",
+      "check": "File bytes unchanged by the audit (sha256 before == after)",
+      "detail": ""
+    },
+    {
+      "id": "P1-16",
+      "status": "PASS",
+      "check": "Rows == 125,973",
+      "detail": "observed 125,973"
+    },
+    {
+      "id": "P1-17",
+      "status": "PASS",
+      "check": "Normal == 67,343",
+      "detail": "observed 67,343"
+    },
+    {
+      "id": "P1-18",
+      "status": "PASS",
+      "check": "Attack == 58,630",
+      "detail": "observed 58,630"
+    },
+    {
+      "id": "P1-19",
+      "status": "PASS",
+      "check": "Attack classes == 22",
+      "detail": "observed 22"
+    },
+    {
+      "id": "P1-20",
+      "status": "PASS",
+      "check": "The 8 zero-day classes have exactly the counts in paper Fig. 4",
+      "detail": "observed {'imap': 11, 'rootkit': 10, 'loadmodule': 9, 'ftp_write': 8, 'multihop': 7, 'phf': 4, 'perl': 3, 'spy': 2}"
+    },
+    {
+      "id": "P1-21",
+      "status": "PASS",
+      "check": "Other counts quoted in the text match (guess_passwd 53, buffer_overflow 30, warezmaster 20, land 18)",
+      "detail": "observed {'guess_passwd': 53, 'buffer_overflow': 30, 'warezmaster': 20, 'land': 18}"
+    },
+    {
+      "id": "P1-22",
+      "status": "PASS",
+      "check": "Rare-class rule n(C) <= delta selects exactly the 8 spec classes at delta=14",
+      "detail": ""
+    },
+    {
+      "id": "P1-23",
+      "status": "PASS",
+      "check": "That range is 11..17 as the spec claims (AT-02)",
+      "detail": "observed (11, 17)"
+    },
+    {
+      "id": "P1-24",
+      "status": "PASS",
+      "check": "The 14 remaining ('known') attack classes equal the paper's Fig. 5 list",
+      "detail": "14 classes"
+    },
+    {
+      "id": "P1-25",
+      "status": "WARN",
+      "check": "Fig. 3 TRAIN-attack count (33,558) is consistent with 60% of known attacks",
+      "detail": "60% of 58,576 = 35,145.6; paper shows 33,558; gap = 1,588 rows (spec contradiction C-5; all other Fig. 3 numbers match within rounding)"
+    },
+    {
+      "id": "P1-26",
+      "status": "PASS",
+      "check": "No header row (first field is numeric)",
+      "detail": ""
+    },
+    {
+      "id": "P1-27",
+      "status": "PASS",
+      "check": "Every line has exactly 43 fields",
+      "detail": "field-count histogram = {43: 22544}"
+    },
+    {
+      "id": "P1-28",
+      "status": "PASS",
+      "check": "No blank lines",
+      "detail": "0 blank"
+    },
+    {
+      "id": "P1-29",
+      "status": "PASS",
+      "check": "Plain ASCII text",
+      "detail": ""
+    },
+    {
+      "id": "P1-30",
+      "status": "PASS",
+      "check": "'num_outbound_cmds' is also constant in this file (consistency only)",
+      "detail": "found ['num_outbound_cmds']"
+    },
+    {
+      "id": "P1-31",
+      "status": "PASS",
+      "check": "No missing values",
+      "detail": "0 missing cells"
+    },
+    {
+      "id": "P1-32",
+      "status": "PASS",
+      "check": "No infinite values",
+      "detail": "0 inf cells"
+    },
+    {
+      "id": "P1-33",
+      "status": "PASS",
+      "check": "No negative numbers in any numeric column",
+      "detail": ""
+    },
+    {
+      "id": "P1-34",
+      "status": "PASS",
+      "check": "All 15 '*_rate' columns lie in [0, 1]",
+      "detail": ""
+    },
+    {
+      "id": "P1-35",
+      "status": "WARN",
+      "check": "Binary-looking columns only contain 0/1",
+      "detail": "extra values found: {'su_attempted': [2]}"
+    },
+    {
+      "id": "P1-36",
+      "status": "PASS",
+      "check": "No stray whitespace in text columns",
+      "detail": ""
+    },
+    {
+      "id": "P1-37",
+      "status": "PASS",
+      "check": "No trailing '.' on label names (as in raw KDD'99)",
+      "detail": "0 rows"
+    },
+    {
+      "id": "P1-38",
+      "status": "PASS",
+      "check": "No fully identical rows (all 43 fields)",
+      "detail": "0 duplicates"
+    },
+    {
+      "id": "P1-39",
+      "status": "PASS",
+      "check": "File bytes unchanged by the audit (sha256 before == after)",
+      "detail": ""
+    },
+    {
+      "id": "P1-40",
+      "status": "PASS",
+      "check": "KDDTest+ contains attack labels that never occur in KDDTrain+ (natural novelty exists)",
+      "detail": "17 novel classes, 3,750 rows"
+    },
+    {
+      "id": "P1-41",
+      "status": "WARN",
+      "check": "No KDDTest+ row repeats a KDDTrain+ feature vector",
+      "detail": "664 overlapping rows -> secondary evaluation must report results with and without them"
+    }
+  ],
+  "train_summary": {
+    "n_normal": 67343,
+    "n_attack": 58630,
+    "zero_day_observed": {
+      "imap": 11,
+      "rootkit": 10,
+      "loadmodule": 9,
+      "ftp_write": 8,
+      "multihop": 7,
+      "phf": 4,
+      "perl": 3,
+      "spy": 2
+    },
+    "known_attack_classes": [
+      "back",
+      "buffer_overflow",
+      "guess_passwd",
+      "ipsweep",
+      "land",
+      "neptune",
+      "nmap",
+      "pod",
+      "portsweep",
+      "satan",
+      "smurf",
+      "teardrop",
+      "warezclient",
+      "warezmaster"
+    ],
+    "delta_range_ok": [
+      11,
+      17
+    ]
+  },
+  "files": {
+    "KDDTrain+": {
+      "path": "data\\raw\\KDDTrain_.txt",
+      "sha256": "1b86d2f957b33082081bba410fe129b475efebcc13c9014c3f447c8271aadf95",
+      "bytes": 19109424,
+      "rows": 125973,
+      "cols": 43,
+      "raw_text": {
+        "n_lines": 125973,
+        "n_blank_lines": 0,
+        "n_carriage_returns": 0,
+        "is_ascii": true,
+        "ends_with_newline": true,
+        "field_count_histogram": {
+          "43": 125973
+        },
+        "first_line_fields": [
+          "0",
+          "tcp",
+          "ftp_data",
+          "SF",
+          "491",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "2",
+          "2",
+          "0.00",
+          "0.00",
+          "0.00",
+          "0.00",
+          "1.00",
+          "0.00",
+          "0.00",
+          "150",
+          "25",
+          "0.17",
+          "0.03",
+          "0.17",
+          "0.00",
+          "0.00",
+          "0.00",
+          "0.05",
+          "0.00",
+          "normal",
+          "20"
+        ],
+        "header_suspected": false
+      },
+      "derived_inputs": [
+        "duration",
+        "protocol_type",
+        "service",
+        "flag",
+        "src_bytes",
+        "dst_bytes",
+        "land",
+        "wrong_fragment",
+        "urgent",
+        "hot",
+        "num_failed_logins",
+        "logged_in",
+        "num_compromised",
+        "root_shell",
+        "su_attempted",
+        "num_root",
+        "num_file_creations",
+        "num_shells",
+        "num_access_files",
+        "is_host_login",
+        "is_guest_login",
+        "count",
+        "srv_count",
+        "serror_rate",
+        "srv_serror_rate",
+        "rerror_rate",
+        "srv_rerror_rate",
+        "same_srv_rate",
+        "diff_srv_rate",
+        "srv_diff_host_rate",
+        "dst_host_count",
+        "dst_host_srv_count",
+        "dst_host_same_srv_rate",
+        "dst_host_diff_srv_rate",
+        "dst_host_same_src_port_rate",
+        "dst_host_srv_diff_host_rate",
+        "dst_host_serror_rate",
+        "dst_host_srv_serror_rate",
+        "dst_host_rerror_rate",
+        "dst_host_srv_rerror_rate",
+        "level"
+      ],
+      "categorical_values": {
+        "protocol_type": [
+          "icmp",
+          "tcp",
+          "udp"
+        ],
+        "service": [
+          "IRC",
+          "X11",
+          "Z39_50",
+          "aol",
+          "auth",
+          "bgp",
+          "courier",
+          "csnet_ns",
+          "ctf",
+          "daytime",
+          "discard",
+          "domain",
+          "domain_u",
+          "echo",
+          "eco_i",
+          "ecr_i",
+          "efs",
+          "exec",
+          "finger",
+          "ftp",
+          "ftp_data",
+          "gopher",
+          "harvest",
+          "hostnames",
+          "http",
+          "http_2784",
+          "http_443",
+          "http_8001",
+          "imap4",
+          "iso_tsap",
+          "klogin",
+          "kshell",
+          "ldap",
+          "link",
+          "login",
+          "mtp",
+          "name",
+          "netbios_dgm",
+          "netbios_ns",
+          "netbios_ssn",
+          "netstat",
+          "nnsp",
+          "nntp",
+          "ntp_u",
+          "other",
+          "pm_dump",
+          "pop_2",
+          "pop_3",
+          "printer",
+          "private",
+          "red_i",
+          "remote_job",
+          "rje",
+          "shell",
+          "smtp",
+          "sql_net",
+          "ssh",
+          "sunrpc",
+          "supdup",
+          "systat",
+          "telnet",
+          "tftp_u",
+          "tim_i",
+          "time",
+          "urh_i",
+          "urp_i",
+          "uucp",
+          "uucp_path",
+          "vmnet",
+          "whois"
+        ],
+        "flag": [
+          "OTH",
+          "REJ",
+          "RSTO",
+          "RSTOS0",
+          "RSTR",
+          "S0",
+          "S1",
+          "S2",
+          "S3",
+          "SF",
+          "SH"
+        ]
+      },
+      "full_row_duplicates": 0,
+      "feature_vector_repeats": 16,
+      "conflicting_label_groups": 15,
+      "sha256_after_audit": "1b86d2f957b33082081bba410fe129b475efebcc13c9014c3f447c8271aadf95"
+    },
+    "KDDTest+": {
+      "path": "data\\raw\\KDDTest_.txt",
+      "sha256": "fa46b0935342616aa83b7c2578db355b6a7aaabbc492248172c7a1e8b7ab8f84",
+      "bytes": 3441513,
+      "rows": 22544,
+      "cols": 43,
+      "raw_text": {
+        "n_lines": 22544,
+        "n_blank_lines": 0,
+        "n_carriage_returns": 0,
+        "is_ascii": true,
+        "ends_with_newline": true,
+        "field_count_histogram": {
+          "43": 22544
+        },
+        "first_line_fields": [
+          "0",
+          "tcp",
+          "private",
+          "REJ",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "0",
+          "229",
+          "10",
+          "0.00",
+          "0.00",
+          "1.00",
+          "1.00",
+          "0.04",
+          "0.06",
+          "0.00",
+          "255",
+          "10",
+          "0.04",
+          "0.06",
+          "0.00",
+          "0.00",
+          "0.00",
+          "0.00",
+          "1.00",
+          "1.00",
+          "neptune",
+          "21"
+        ],
+        "header_suspected": false
+      },
+      "categorical_values": {
+        "protocol_type": [
+          "icmp",
+          "tcp",
+          "udp"
+        ],
+        "service": [
+          "IRC",
+          "X11",
+          "Z39_50",
+          "auth",
+          "bgp",
+          "courier",
+          "csnet_ns",
+          "ctf",
+          "daytime",
+          "discard",
+          "domain",
+          "domain_u",
+          "echo",
+          "eco_i",
+          "ecr_i",
+          "efs",
+          "exec",
+          "finger",
+          "ftp",
+          "ftp_data",
+          "gopher",
+          "hostnames",
+          "http",
+          "http_443",
+          "imap4",
+          "iso_tsap",
+          "klogin",
+          "kshell",
+          "ldap",
+          "link",
+          "login",
+          "mtp",
+          "name",
+          "netbios_dgm",
+          "netbios_ns",
+          "netbios_ssn",
+          "netstat",
+          "nnsp",
+          "nntp",
+          "ntp_u",
+          "other",
+          "pm_dump",
+          "pop_2",
+          "pop_3",
+          "printer",
+          "private",
+          "remote_job",
+          "rje",
+          "shell",
+          "smtp",
+          "sql_net",
+          "ssh",
+          "sunrpc",
+          "supdup",
+          "systat",
+          "telnet",
+          "tftp_u",
+          "tim_i",
+          "time",
+          "urp_i",
+          "uucp",
+          "uucp_path",
+          "vmnet",
+          "whois"
+        ],
+        "flag": [
+          "OTH",
+          "REJ",
+          "RSTO",
+          "RSTOS0",
+          "RSTR",
+          "S0",
+          "S1",
+          "S2",
+          "S3",
+          "SF",
+          "SH"
+        ]
+      },
+      "full_row_duplicates": 0,
+      "feature_vector_repeats": 57,
+      "conflicting_label_groups": 57,
+      "sha256_after_audit": "fa46b0935342616aa83b7c2578db355b6a7aaabbc492248172c7a1e8b7ab8f84"
+    },
+    "kddtest_structure": {
+      "rows_by_category": {
+        "normal": 9711,
+        "known (seen in KDDTrain+, kept for training)": 9042,
+        "novel (label never appears in KDDTrain+)": 3750,
+        "rare-8 (in KDDTrain+ but held out by the paper's rule)": 41
+      },
+      "rare8_rows": {
+        "ftp_write": 3,
+        "imap": 1,
+        "loadmodule": 2,
+        "multihop": 18,
+        "perl": 2,
+        "phf": 2,
+        "rootkit": 13,
+        "spy": 0
+      },
+      "novel_classes": {
+        "mscan": 996,
+        "apache2": 737,
+        "processtable": 685,
+        "snmpguess": 331,
+        "saint": 319,
+        "mailbomb": 293,
+        "snmpgetattack": 178,
+        "httptunnel": 133,
+        "named": 17,
+        "ps": 15,
+        "sendmail": 14,
+        "xterm": 13,
+        "xlock": 9,
+        "xsnoop": 4,
+        "worm": 2,
+        "sqlattack": 2,
+        "udpstorm": 2
+      },
+      "train_classes_absent_in_test": [
+        "spy",
+        "warezclient"
+      ],
+      "rows_overlapping_train_feature_vectors": 664,
+      "delta_used_to_define_rare": 14,
+      "usage_note": "structural/descriptive only; no feature statistics computed from KDDTest+"
+    }
+  }
+}

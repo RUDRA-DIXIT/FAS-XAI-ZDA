@@ -1,0 +1,38 @@
+{
+  "main_selection_method": "top 15 features by mean training-attack attention",
+  "top_15_features": [
+    "dst_host_serror_rate",
+    "dst_host_same_srv_rate",
+    "dst_host_srv_diff_host_rate",
+    "srv_serror_rate",
+    "serror_rate",
+    "dst_host_diff_srv_rate",
+    "dst_host_same_src_port_rate",
+    "dst_host_srv_count",
+    "same_srv_rate",
+    "rerror_rate",
+    "srv_rerror_rate",
+    "srv_count",
+    "srv_diff_host_rate",
+    "is_guest_login",
+    "diff_srv_rate"
+  ],
+  "transition_heuristic": "largest adjacent drop in descending mean attention",
+  "transition_selected_count": 13,
+  "transition_selected_features": [
+    "dst_host_serror_rate",
+    "dst_host_same_srv_rate",
+    "dst_host_srv_diff_host_rate",
+    "srv_serror_rate",
+    "serror_rate",
+    "dst_host_diff_srv_rate",
+    "dst_host_same_src_port_rate",
+    "dst_host_srv_count",
+    "same_srv_rate",
+    "rerror_rate",
+    "srv_rerror_rate",
+    "srv_count",
+    "srv_diff_host_rate"
+  ],
+  "caveat": "The paper's transition threshold is not specified unambiguously; this heuristic is not claimed to be the exact paper algorithm."
+}

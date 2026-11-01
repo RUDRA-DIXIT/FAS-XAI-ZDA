@@ -1,0 +1,207 @@
+[
+  {
+    "rank": 1,
+    "feature": "dst_host_serror_rate",
+    "mean_attention": 0.04697306826710701
+  },
+  {
+    "rank": 2,
+    "feature": "dst_host_same_srv_rate",
+    "mean_attention": 0.04664541780948639
+  },
+  {
+    "rank": 3,
+    "feature": "dst_host_srv_diff_host_rate",
+    "mean_attention": 0.045898132026195526
+  },
+  {
+    "rank": 4,
+    "feature": "srv_serror_rate",
+    "mean_attention": 0.045724187046289444
+  },
+  {
+    "rank": 5,
+    "feature": "serror_rate",
+    "mean_attention": 0.04495161399245262
+  },
+  {
+    "rank": 6,
+    "feature": "dst_host_diff_srv_rate",
+    "mean_attention": 0.04392716661095619
+  },
+  {
+    "rank": 7,
+    "feature": "dst_host_same_src_port_rate",
+    "mean_attention": 0.04329075291752815
+  },
+  {
+    "rank": 8,
+    "feature": "dst_host_srv_count",
+    "mean_attention": 0.04203992709517479
+  },
+  {
+    "rank": 9,
+    "feature": "same_srv_rate",
+    "mean_attention": 0.04145554453134537
+  },
+  {
+    "rank": 10,
+    "feature": "rerror_rate",
+    "mean_attention": 0.04103391245007515
+  },
+  {
+    "rank": 11,
+    "feature": "srv_rerror_rate",
+    "mean_attention": 0.03862372040748596
+  },
+  {
+    "rank": 12,
+    "feature": "srv_count",
+    "mean_attention": 0.03775031864643097
+  },
+  {
+    "rank": 13,
+    "feature": "srv_diff_host_rate",
+    "mean_attention": 0.03742296248674393
+  },
+  {
+    "rank": 14,
+    "feature": "is_guest_login",
+    "mean_attention": 0.03166618198156357
+  },
+  {
+    "rank": 15,
+    "feature": "diff_srv_rate",
+    "mean_attention": 0.03163417801260948
+  },
+  {
+    "rank": 16,
+    "feature": "count",
+    "mean_attention": 0.030525261536240578
+  },
+  {
+    "rank": 17,
+    "feature": "dst_host_srv_serror_rate",
+    "mean_attention": 0.02798263542354107
+  },
+  {
+    "rank": 18,
+    "feature": "service",
+    "mean_attention": 0.022561868652701378
+  },
+  {
+    "rank": 19,
+    "feature": "level",
+    "mean_attention": 0.022555220872163773
+  },
+  {
+    "rank": 20,
+    "feature": "is_host_login",
+    "mean_attention": 0.021786866709589958
+  },
+  {
+    "rank": 21,
+    "feature": "dst_host_rerror_rate",
+    "mean_attention": 0.019029172137379646
+  },
+  {
+    "rank": 22,
+    "feature": "dst_host_srv_rerror_rate",
+    "mean_attention": 0.018478726968169212
+  },
+  {
+    "rank": 23,
+    "feature": "flag",
+    "mean_attention": 0.018000364303588867
+  },
+  {
+    "rank": 24,
+    "feature": "protocol_type",
+    "mean_attention": 0.017672885209321976
+  },
+  {
+    "rank": 25,
+    "feature": "num_access_files",
+    "mean_attention": 0.01498230081051588
+  },
+  {
+    "rank": 26,
+    "feature": "dst_host_count",
+    "mean_attention": 0.012623093090951443
+  },
+  {
+    "rank": 27,
+    "feature": "src_bytes",
+    "mean_attention": 0.012346568517386913
+  },
+  {
+    "rank": 28,
+    "feature": "num_shells",
+    "mean_attention": 0.012222321704030037
+  },
+  {
+    "rank": 29,
+    "feature": "num_compromised",
+    "mean_attention": 0.011274326592683792
+  },
+  {
+    "rank": 30,
+    "feature": "logged_in",
+    "mean_attention": 0.011181538924574852
+  },
+  {
+    "rank": 31,
+    "feature": "num_file_creations",
+    "mean_attention": 0.010874025523662567
+  },
+  {
+    "rank": 32,
+    "feature": "root_shell",
+    "mean_attention": 0.010759277269244194
+  },
+  {
+    "rank": 33,
+    "feature": "urgent",
+    "mean_attention": 0.010238592512905598
+  },
+  {
+    "rank": 34,
+    "feature": "hot",
+    "mean_attention": 0.010055731050670147
+  },
+  {
+    "rank": 35,
+    "feature": "su_attempted",
+    "mean_attention": 0.009957252070307732
+  },
+  {
+    "rank": 36,
+    "feature": "num_failed_logins",
+    "mean_attention": 0.009915451519191265
+  },
+  {
+    "rank": 37,
+    "feature": "num_root",
+    "mean_attention": 0.009806536138057709
+  },
+  {
+    "rank": 38,
+    "feature": "land",
+    "mean_attention": 0.0091726528480649
+  },
+  {
+    "rank": 39,
+    "feature": "wrong_fragment",
+    "mean_attention": 0.009162639267742634
+  },
+  {
+    "rank": 40,
+    "feature": "dst_bytes",
+    "mean_attention": 0.009002822451293468
+  },
+  {
+    "rank": 41,
+    "feature": "duration",
+    "mean_attention": 0.008795255795121193
+  }
+]

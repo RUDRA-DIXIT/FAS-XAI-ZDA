@@ -1,0 +1,66 @@
+{
+  "threshold": 0.5,
+  "n_samples": 25238,
+  "accuracy": 0.9758697202630954,
+  "balanced_accuracy": 0.9761002378166419,
+  "precision_attack": 0.9690652320107599,
+  "recall_attack": 0.9795224742968817,
+  "f1_attack": 0.9742657933657299,
+  "roc_auc": 0.9977643548774977,
+  "average_precision": 0.9976808379338439,
+  "confusion_matrix": {
+    "tn": 13101,
+    "fp": 368,
+    "fn": 241,
+    "tp": 11528
+  },
+  "classification_report": {
+    "normal": {
+      "precision": 0.9819367411182731,
+      "recall": 0.9726780013364021,
+      "f1-score": 0.9772854425422401,
+      "support": 13469.0
+    },
+    "attack": {
+      "precision": 0.9690652320107599,
+      "recall": 0.9795224742968817,
+      "f1-score": 0.9742657933657299,
+      "support": 11769.0
+    },
+    "accuracy": 0.9758697202630954,
+    "macro avg": {
+      "precision": 0.9755009865645166,
+      "recall": 0.9761002378166419,
+      "f1-score": 0.975775617953985,
+      "support": 25238.0
+    },
+    "weighted avg": {
+      "precision": 0.9759344909127765,
+      "recall": 0.9758697202630954,
+      "f1-score": 0.9758773178430425,
+      "support": 25238.0
+    }
+  },
+  "experiment": "04_top15_features_without_attention",
+  "feature_count": 15,
+  "feature_names": [
+    "dst_host_serror_rate",
+    "dst_host_same_srv_rate",
+    "dst_host_srv_diff_host_rate",
+    "srv_serror_rate",
+    "serror_rate",
+    "dst_host_diff_srv_rate",
+    "dst_host_same_src_port_rate",
+    "dst_host_srv_count",
+    "same_srv_rate",
+    "rerror_rate",
+    "srv_rerror_rate",
+    "srv_count",
+    "srv_diff_host_rate",
+    "is_guest_login",
+    "diff_srv_rate"
+  ],
+  "attention_enabled": false,
+  "epochs_requested": 10,
+  "epochs_ran": 10
+}
