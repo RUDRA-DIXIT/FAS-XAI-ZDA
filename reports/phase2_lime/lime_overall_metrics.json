@@ -1,0 +1,12 @@
+{
+  "total_zero_day_samples": 54,
+  "zero_day_detection_rate_percentage": 90.74074074074075,
+  "mean_lime_fidelity": 0.22564655295461045,
+  "median_lime_fidelity": 0.2356152351298909,
+  "mean_lime_runtime_seconds": 0.17453919727777414,
+  "mean_top10_overlap_count": 1.3888888888888888,
+  "mean_top10_overlap_percentage": 13.88888888888889,
+  "mean_jaccard_similarity": 0.07559021009313407,
+  "total_correctly_detected": 49,
+  "total_false_negatives": 5
+}

@@ -1,0 +1,15 @@
+{
+    "sample_index": 2294,
+    "attack_type": "ftp_write",
+    "attack_probability": 0.9855839014053345,
+    "lime_fidelity": 0.33972982204495605,
+    "lime_runtime_seconds": 0.7626228639999226,
+    "top10_overlap_count": 3,
+    "top10_overlap_percentage": 30.0,
+    "jaccard_similarity": 0.17647058823529413,
+    "common_features": [
+        "dst_host_same_srv_rate",
+        "dst_host_serror_rate",
+        "serror_rate"
+    ]
+}
