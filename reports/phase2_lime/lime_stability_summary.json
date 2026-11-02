@@ -1,0 +1,9 @@
+{
+  "sample_index": 2294,
+  "num_seeds": 5,
+  "num_seed_pairs": 10,
+  "mean_pairwise_jaccard": 0.6043956043956044,
+  "std_pairwise_jaccard": 0.08642411901922534,
+  "mean_lime_fidelity": 0.27012093425473005,
+  "mean_runtime_seconds": 0.18875425480000557
+}

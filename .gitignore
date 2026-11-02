@@ -25,3 +25,6 @@ Thumbs.db
 # Temporary files
 *.tmp
 *.log
+
+# Local datasets and preprocessed arrays
+data/
