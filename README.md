@@ -153,7 +153,62 @@ FAS-XAI-ZDA/
 └── .gitignore
 ```
 
-## 9. Installation and Execution
+## 9. Phase 2: LIME-Based Local Explainability
+
+### Research Gap
+
+The original framework uses feature attention scores to identify important network traffic features. However, global feature importance does not necessarily explain the reasoning behind individual zero-day attack predictions.
+
+### Proposed Improvement
+
+We extend the original FAS-XAI-ZDA framework with Local Interpretable Model-Agnostic Explanations (LIME).
+
+The extension generates local explanations for individual network traffic samples while retaining the original BiLSTM detection model and feature attention mechanism.
+
+### Implementation
+
+The Phase 2 implementation includes:
+
+- LIME-based local explanation generation.
+- Evaluation of explanation fidelity.
+- Measurement of explanation runtime.
+- Comparison between LIME feature rankings and global feature attention rankings.
+- Stability evaluation across multiple random seeds.
+
+### Phase 2 Experimental Results
+
+The LIME experiments were evaluated on 54 zero-day samples.
+
+| Metric | Result |
+|---|---:|
+| Zero-day samples evaluated | 54 |
+| Correctly detected samples | 49 |
+| Zero-day detection rate | 90.74% |
+| Mean LIME fidelity | 0.226 |
+| Mean explanation runtime | 0.175 seconds |
+| Mean top-10 feature overlap | 1.39 |
+| Mean Jaccard similarity | 0.076 |
+
+These results evaluate the explainability extension. They do not indicate an improvement in the underlying classifier's accuracy.
+
+### Execution
+
+1. Clone the repository.
+2. Create and activate the Python virtual environment.
+3. Install the dependencies using `requirements.txt`.
+4. Obtain the NSL-KDD dataset and prepare the data using the documented preprocessing pipeline.
+5. Open the Phase 2 LIME experiment notebook.
+6. Execute the notebook cells in order to generate local explanations and evaluation metrics.
+
+The Phase 2 results are available in `reports/phase2_lime/`.
+
+### Supporting Literature
+
+Ribeiro, M. T., Singh, S., & Guestrin, C. (2016). *Why Should I Trust You? Explaining the Predictions of Any Classifier.* Proceedings of the 22nd ACM SIGKDD International Conference on Knowledge Discovery and Data Mining.
+
+DOI: https://doi.org/10.1145/2939672.2939778
+
+## 10. Installation and Execution
 
 ### Requirements
 
@@ -212,7 +267,7 @@ The processed arrays and preprocessing artifacts are required before training.
 
 **Note:** The repository currently contains the experiment checkpoints, metrics and logs, but not the raw or processed dataset files. Verify the preprocessing and training script paths before running the experiments from a fresh clone.
 
-## 10. Reproducibility
+## 11. Reproducibility
 
 The experiments use a fixed random seed of 42.
 
@@ -232,9 +287,11 @@ AI tools were used as development assistance for understanding the research pape
 
 Further details are provided in `AI_USAGE.md`.
 
-## 12. References
+## 13. References
 
 Abbasi, A. A., Zameer, A., & Raja, M. A. Z. (2026). *FAS-XAI-ZDA: Explainable deep neural networks for zero-day attack detection leveraging feature attention scores*. Applied Soft Computing, 196, 115137.
+
+
 
 DOI: https://doi.org/10.1016/j.asoc.2026.115137
 
